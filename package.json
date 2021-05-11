@@ -1,15 +1,25 @@
 {
   "name": "orinoco-backend",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "sass": "sass --watch frontend/scss/style.scss:frontend/css/style.css",
+    "start": "node server.js"
   },
-  "author": "",
+  "author": "Behets Wydemans Arthur",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4",
     "uuid": "^3.3.2"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArthurBehets/BehetsWydemansArthur_5_030521.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ArthurBehets/BehetsWydemansArthur_5_030521/issues"
+  },
+  "homepage": "https://github.com/ArthurBehets/BehetsWydemansArthur_5_030521#readme",
+  "description": ""
 }

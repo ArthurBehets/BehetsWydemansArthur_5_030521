@@ -1,0 +1,17 @@
+h1{
+    padding : 15px;
+    margin-left : 20px;
+}
+
+
+.card{
+    margin-right : 30px;
+    margin-bottom: 30px;
+    text-decoration: none;
+    color : black;
+    &-img{
+        height: 200px;
+        object-fit: cover;
+    }
+}
+
