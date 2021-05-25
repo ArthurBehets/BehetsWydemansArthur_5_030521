@@ -9,17 +9,24 @@ h1 {
   padding-bottom: 2px;
   padding-left: 4px;
   padding-right: 4px;
-  color: white;
-  background-color: red;
+  color: black;
+  background-color: #ff5a5a;
   border-radius: 20px;
   font-size: small;
   font-weight: normal;
+}
+
+.fixed {
+  position: fixed;
+  width: 100%;
+  top: 0;
 }
 
 /* NAV END */
 .article {
   display: flex;
   flex-direction: column;
+  margin-top: 75px;
 }
 .article__title {
   margin-left: 15%;
@@ -58,17 +65,19 @@ h1 {
   box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.2);
 }
 
+.basket {
+  margin-top: 75px;
+}
 .basket__title {
   margin-left: 15%;
 }
 .basket__cardsContainer {
   display: flex;
-  width: 80%;
+  width: 85%;
   margin-left: 5%;
   flex-direction: column;
 }
 .basket__cardsContainer-card {
-  margin-bottom: 30px;
   height: 150px;
   display: flex;
   flex-direction: row;
@@ -86,6 +95,31 @@ h1 {
   margin-top: 65px;
   margin-left: 5%;
   width: 15%;
+}
+.basket__cardsContainer-card-infos {
+  width: 45%;
+  margin-left: 5%;
+}
+.basket__cardsContainer-card-infos-name {
+  font-weight: bold;
+  margin-top: 15px;
+}
+.basket__cardsContainer-card-infos-description {
+  margin-top: 10px;
+}
+.basket__cardsContainer-card-price {
+  margin-top: 60px;
+  margin-left: 5%;
+}
+.basket__cardsContainer-button {
+  margin-bottom: 30px;
+  padding: 5px;
+  text-decoration: none;
+  color: black;
+  background-color: #ff5a5a;
+  text-align: center;
+  width: 20%;
+  height: 40px;
 }
 
 /*# sourceMappingURL=style.css.map */

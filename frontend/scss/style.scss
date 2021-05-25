@@ -3,17 +3,24 @@ h1{
     margin-left : 20px;
 }
 
+
 /* NAV */
 .notification{
     margin-left: 3px;
     padding-bottom: 2px;
     padding-left: 4px;
     padding-right: 4px;
-    color : white;
-    background-color: red;
+    color : black;
+    background-color: rgba(255,90,90);
     border-radius: 20px;
     font-size: small;
     font-weight: normal;
+}
+
+.fixed{
+    position :fixed;
+    width : 100%;
+    top : 0;
 }
 /* NAV END */
 
@@ -21,6 +28,7 @@ h1{
 .article{
     display : flex;
     flex-direction: column;
+    margin-top: 75px;
     &__title{
         margin-left: 15%;
     }
@@ -63,16 +71,16 @@ h1{
 
 
 .basket{
+    margin-top: 75px;
     &__title{
         margin-left: 15%;
     }
     &__cardsContainer{
         display: flex;
-        width : 80%;
+        width : 85%;
         margin-left: 5%;
         flex-direction: column;
         &-card{
-            margin-bottom: 30px;
             height : 150px;
             display: flex;
             flex-direction: row;
@@ -90,6 +98,32 @@ h1{
                 margin-left: 5%;
                 width : 15%;
             }
+            &-infos{
+                width : 45%;
+                margin-left: 5%;
+                &-name{
+                    font-weight: bold;
+                    margin-top: 15px;
+                }
+                &-description{
+                    margin-top: 10px;
+                }
+            }
+            &-price{
+                margin-top: 60px;
+                margin-left: 5%;
+            }
+        }
+        &-button{
+            margin-bottom: 30px;
+            padding : 5px;
+            text-decoration: none;
+            color: black;
+            background-color: rgba(255,90,90);
+            text-align: center;
+            width : 20%;
+            height : 40px;
+
         }
     }
 }

@@ -1,7 +1,15 @@
 /* MISE EN PAGE  */
 
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener('DOMContentLoaded', function teddyInit(){
     /*Notification on basket  */
+    if(localStorage.length >= 1){
+        let notif = localStorage.length;
+        document.getElementById("notification").innerHTML = "Mon panier<b class='notification'>" + notif + "</b>";
+    }
+    else{
+        /* */ 
+    }
+    /*Notification END*/ 
     fetch("http://localhost:3000/api/teddies")
     .then (function(res){
         if(res.ok){
@@ -51,7 +59,8 @@ function addToBasket(id){
                     article.amount = 1;
                     let object = JSON.stringify(article);
                     localStorage.setItem(id, object);
-                   
+                    let notif = localStorage.length;
+                    document.getElementById("notification").innerHTML = "Mon panier<b class='notification'>" + notif + "</b>";
                 }
                 else{
                     /**/ 
@@ -60,12 +69,22 @@ function addToBasket(id){
         }
         else{
             let item = JSON.parse(testId);
-            if (confirm("Cet élément est déjà présent " + item.amount + " fois dans votre panier. Voulez vous ajouter un nouvel exemplaire?")){
-                item.amount += 1;
-                localStorage.setItem(id, JSON.stringify(item));
+            if (item.amount > 0){
+                if (confirm("Cet élément est déjà présent " + item.amount + " fois dans votre panier. Voulez vous ajouter un nouvel exemplaire?")){
+                    item.amount += 1;
+                    localStorage.setItem(id, JSON.stringify(item));
+                    let notif = localStorage.length;
+                    document.getElementById("notification").innerHTML = "Mon panier<b class='notification'>" + notif + "</b>";
+                }
+                else{
+                    /* */
+                }
             }
             else{
-                /* */
+                item.amount = 1;
+                localStorage.setItem(id, JSON.stringify(item));
+                let notif = localStorage.length;
+                document.getElementById("notification").innerHTML = "Mon panier<b class='notification'>" + notif + "</b>";
             }
         }
         

@@ -1,8 +1,8 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function indexInit() {
     /*Notification on basket  */
     if(localStorage.length >= 1){
         let notif = localStorage.length;
-        document.getElementById("notification").innerHTML += "<b class='notification'>" + notif + "</b>";
+        document.getElementById("notification").innerHTML = "Mon panier<b class='notification'>" + notif + "</b>";
     }
     else{
         /* */ 
