@@ -22,12 +22,12 @@ document.addEventListener('DOMContentLoaded', function teddyInit(){
             let id = "\""+value[i]._id+"\"";
             document.getElementById("cardsContainer").innerHTML += 
             
-            "<div class='article__cardsContainer-card'><div class='article__cardsContainer-card-body' id='"+ value[i]._id + "'>" +
-            "<h2 class='article__cardsContainer-card-body-title'>"+ value[i].name +"</h2>" +
-            "<p class='article__cardsContainer-card-body-price'>" + value[i].price/1000 + "€</p>" +
-            "<img class='article__cardsContainer-card-body-img' src='"+ value[i].imageUrl + "'></img>" + 
-            "<p class='article__cardsContainer-card-body-description'>" + value[i].description + "</p>" +
-            "<button onclick ='addToBasket("+ id + ")' class='article__cardsContainer-card-body-button'> Ajouter au panier</button> " +
+            "<div class='col-3 card'><div class='card-body' id='"+ value[i]._id + "'>" +
+            "<h2 class='card-title'>"+ value[i].name +"</h2>" +
+            "<p class='card-text'>" + value[i].price/1000 + "€</p>" +
+            "<img class='card-img' src='"+ value[i].imageUrl + "'></img>" + 
+            "<p class='card-text'>" + value[i].description + "</p>" +
+            "<button onclick ='addToBasket("+ id + ")' class='btn btn-success'> Ajouter au panier</button> " +
             "</div></div>";  
         }
     })
@@ -61,6 +61,11 @@ function addToBasket(id){
                     localStorage.setItem(id, object);
                     let notif = localStorage.length;
                     document.getElementById("notification").innerHTML = "Mon panier<b class='notification'>" + notif + "</b>";
+                    console.log("ok");
+                    document.getElementById("alert").innerHTML = "<div class ='alert-good'><p>L'élément a bien été ajouté au panier</p></div>";
+                    setTimeout(function(){
+                    document.getElementById("alert").innerHTML = "";
+                    }, 5000);
                 }
                 else{
                     /**/ 
@@ -95,3 +100,7 @@ function addToBasket(id){
 }
 
 
+/* document.getElementById("alert").innerHTML = "<div class ='alert-good'><p>L'élément a bien été ajouté au panier</p></div>";
+                    setTimeout(function(){
+                    document.getElementById("alert").innerHTML = "";
+                    }, 5000) */
