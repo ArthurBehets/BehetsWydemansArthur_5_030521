@@ -145,3 +145,26 @@ h1{
 }
 
 /* Alert END */
+
+
+/* Command */ 
+.recap{
+    margin-top: 75px;
+    &__body{
+        &-title{
+            margin-bottom: 30px;
+        }
+        &-name{
+            font-size: larger;
+        }
+        &-img{
+            height : 150px;
+            width : 80%;
+            object-fit: cover;
+        }
+        &-subtitle{
+            margin-bottom: 25px;
+        }
+    }
+}
+/* Command END */

@@ -141,5 +141,25 @@ h1 {
 }
 
 /* Alert END */
+/* Command */
+.recap {
+  margin-top: 75px;
+}
+.recap__body-title {
+  margin-bottom: 30px;
+}
+.recap__body-name {
+  font-size: larger;
+}
+.recap__body-img {
+  height: 150px;
+  width: 80%;
+  object-fit: cover;
+}
+.recap__body-subtitle {
+  margin-bottom: 25px;
+}
+
+/* Command END */
 
 /*# sourceMappingURL=style.css.map */

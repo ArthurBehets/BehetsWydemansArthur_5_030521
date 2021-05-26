@@ -2,8 +2,9 @@ var basketTotal = 0;
 
 
 document.addEventListener('DOMContentLoaded', function basketInit(){
-    Object.keys(localStorage).forEach(function(key){
-        let object = localStorage.getItem(key);
+    if(localStorage.length > 0){
+        Object.keys(localStorage).forEach(function(key){
+            let object = localStorage.getItem(key);
             let item = JSON.parse(object);
             if (item.amount > 0){
                 document.getElementById("cardsContainer").innerHTML +=
@@ -25,10 +26,13 @@ document.addEventListener('DOMContentLoaded', function basketInit(){
             else{
                 /* */
             }
-        })
+        })}
+        else{
+            document.getElementById("cardsContainer").innerHTML = "<div class='basket__cardsContainer-empty'><p>Votre panier est vide. Remplissez le avant de passez commande</p></div>"
+        }
     if(basketTotal > 0){
         document.getElementById("basket-total").innerHTML = "Total : " + (basketTotal/1000).toString().replace('.', ',') + "€";
-        document.getElementById("submit-command").innerHTML = "<button class='btn btn-success btn-command'  onclick ='commandSubmit()'>Passer commande</button>";
+        document.getElementById("submit-command").innerHTML = "<a class='btn btn-success btn-command'  target='_blank' href='command.html'>Passer commande</a>";
     }
     else{
         document.getElementById("basket-total").innerHTML = "";
@@ -86,6 +90,7 @@ function deleteFromBasket(id){
     }
     else{
         document.getElementById("notification").innerHTML = "Mon panier";
+        document.getElementById("cardsContainer").innerHTML = "<div class='basket__cardsContainer-empty'><p>Votre panier est vide. Remplissez le avant de passez commande</p></div>"
     }
     /*Notification END*/ 
     if(basketTotal > 0){
