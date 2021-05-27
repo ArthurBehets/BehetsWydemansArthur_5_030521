@@ -22,13 +22,13 @@ document.addEventListener('DOMContentLoaded', function teddyInit(){
             let id = "\""+value[i]._id+"\"";
             document.getElementById("cardsContainer").innerHTML += 
             
-            "<div class='col-3 card'><div class='card-body' id='"+ value[i]._id + "'>" +
+            "<a class='col-12 col-md-5 col-lg-3 card' href='item.html?id=" + value[i]._id + "'><div class='card-body' id='"+ value[i]._id + "'>" +
             "<h2 class='card-title'>"+ value[i].name +"</h2>" +
             "<p class='card-text'>" + value[i].price/1000 + "€</p>" +
             "<img class='card-img' src='"+ value[i].imageUrl + "'></img>" + 
             "<p class='card-text'>" + value[i].description + "</p>" +
             "<button onclick ='addToBasket("+ id + ")' class='btn btn-success'> Ajouter au panier</button> " +
-            "</div></div>";  
+            "</div></a>";  
         }
     })
     .catch(function(err){

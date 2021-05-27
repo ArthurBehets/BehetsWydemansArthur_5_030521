@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function basketInit(){
                 "</div> " +
                 "<p class='basket__cardsContainer-card-price' id='" + item.name + "Price'>" + (item.price*item.amount/1000).toString().replace('.', ',') + "€</p>" +
                 "</div>" + 
-                "<button class='basket__cardsContainer-button' onclick='deleteFromBasket(\"" + item._id + "\")'><p>Supprimer du panier</p></button>" +
+                "<button class='basket__cardsContainer-button text-center' onclick='deleteFromBasket(\"" + item._id + "\")'><p>Supprimer du panier</p></button>" +
                 "<div>";
                 basketTotal += item.price*item.amount;
             }
@@ -67,7 +67,7 @@ function changeAmount(name, id, price){
         document.getElementById("submit-command").innerHTML = "<button class='btn btn-success btn-command' onclick ='commandSubmit()'>Passer commande</button>";
     }
     else{
-        document.getElementById("alert").innerHTML = "<div class ='alert-bad'><p>Veuillez entrer un nombre entre 0 et 999</p></div>";
+        document.getElementById("alert").innerHTML = "<div class ='alert-bad'><p>Veuillez entrer un nombre entre 1 et 999</p></div>";
         let oldAmountObj = localStorage.getItem(id);
         document.getElementById(name).value = JSON.parse(oldAmountObj).amount;
         setTimeout(function(){
