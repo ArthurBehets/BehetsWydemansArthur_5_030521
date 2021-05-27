@@ -32,16 +32,23 @@ h1 {
 .card {
   margin-right: 7%;
   margin-bottom: 20px;
+}
+.card:hover {
+  box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.2);
+}
+.card-body {
   text-decoration: none;
   color: black;
 }
-.card:hover {
+.card-body:hover {
   color: black;
-  box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.2);
 }
 .card-img {
   height: 200px;
   object-fit: cover;
+}
+.card-button {
+  margin-bottom: 10px;
 }
 
 /* INDEX END */
@@ -108,6 +115,7 @@ h1 {
   text-align: center;
   width: 20%;
   height: 40px;
+  z-index: 998;
 }
 
 #basket-total {
@@ -199,5 +207,20 @@ h1 {
 }
 
 /* Command END */
+/* Item */
+.item {
+  font-size: 25px;
+  font-weight: normal;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border: 1px solid grey;
+}
+.item__p {
+  margin-top: 40px;
+}
+.item__p-first {
+  font-weight: bold;
+}
 
 /*# sourceMappingURL=style.css.map */

@@ -3,7 +3,6 @@ h1{
     margin-left : 20px;
 }
 
-
 /* NAV */
 .notification{
     margin-left: 3px;
@@ -32,15 +31,22 @@ h1{
 .card{
     margin-right: 7%;
     margin-bottom: 20px;
-    text-decoration: none;
-    color : black;
     &:hover{
-        color :black;
         box-shadow: 1px 1px 7px rgba(0,0,0,0.2);
+    }
+    &-body{
+        text-decoration: none;
+        color : black;
+        &:hover{
+            color :black;
+    }
     }
     &-img{
         height : 200px;
         object-fit: cover;
+    }
+    &-button{
+        margin-bottom: 10px;
     }
 }
 /* INDEX END */
@@ -106,7 +112,7 @@ h1{
             text-align: center;
             width : 20%;
             height : 40px;
-
+            z-index: 998;
         }
     }
 }
@@ -202,3 +208,21 @@ h1{
     }
 }
 /* Command END */
+
+
+/* Item */
+
+.item{
+    font-size: 25px;
+    font-weight: normal;
+    display : flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border : 1px solid grey;
+    &__p{
+        margin-top: 40px;
+        &-first{
+            font-weight : bold;
+        }
+    }
+}
