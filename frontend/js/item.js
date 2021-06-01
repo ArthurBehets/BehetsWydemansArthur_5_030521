@@ -5,9 +5,6 @@ document.addEventListener('DOMContentLoaded', function(){
         let notif = localStorage.length;
         document.getElementById("notification").innerHTML = "Mon panier<b class='notification'>" + notif + "</b>";
     }
-    else{
-        /* */ 
-    }
     /*Notification END*/ 
     fetch("http://localhost:3000/api/teddies")
     .then (function(res){
@@ -33,9 +30,6 @@ document.addEventListener('DOMContentLoaded', function(){
                 "<div><label for='color'>Couleur :</label><select name='color' class='item__color'>" +colors + "</select></div>" +
                 "</div></div>" + 
                 "<button onclick ='addToBasket("+ id + ")' class='item-button btn btn-success'> Ajouter au panier</button> ";
-            }
-            else{
-            /* */
             }
         }
     })

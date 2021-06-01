@@ -6,9 +6,6 @@ document.addEventListener('DOMContentLoaded', function teddyInit(){
         let notif = localStorage.length;
         document.getElementById("notification").innerHTML = "Mon panier<b class='notification'>" + notif + "</b>";
     }
-    else{
-        /* */ 
-    }
     /*Notification END*/ 
     fetch("http://localhost:3000/api/teddies")
     .then (function(res){

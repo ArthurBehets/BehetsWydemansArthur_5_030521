@@ -22,9 +22,6 @@ document.addEventListener('DOMContentLoaded', function basketInit(){
                 "<div>";
                 basketTotal += item.price*item.amount;
             }
-            else{
-                /* */
-            }
         })}
         else{
             document.getElementById("cardsContainer").innerHTML = "<div class='basket__cardsContainer-empty'><p>Votre panier est vide. Remplissez le avant de passez commande</p></div>"
@@ -40,9 +37,6 @@ document.addEventListener('DOMContentLoaded', function basketInit(){
     if(localStorage.length >= 1){
         let notif = localStorage.length;
         document.getElementById("notification").innerHTML += "<b class='notification'>" + notif + "</b>";
-    }
-    else{
-        /* */ 
     }
     /*Notification END*/ 
 })

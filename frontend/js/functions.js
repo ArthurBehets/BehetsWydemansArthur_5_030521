@@ -23,9 +23,6 @@ function addToBasket(id){
                     document.getElementById("alert").innerHTML = "";
                     }, 5000);
                 }
-                else{
-                    /**/ 
-                }
             }
         }
         else{
@@ -40,9 +37,6 @@ function addToBasket(id){
                     setTimeout(function(){
                     document.getElementById("alert").innerHTML = "";
                     }, 5000);
-                }
-                else{
-                    /* */
                 }
             }
             else{
@@ -119,7 +113,5 @@ function deleteFromBasket(id){
         document.getElementById("cardsContainer").innerHTML = "<div class='basket__cardsContainer-empty'><p>Votre panier est vide. Remplissez le avant de passez commande</p></div>"
     }
 }
-
-/* */
 
 
