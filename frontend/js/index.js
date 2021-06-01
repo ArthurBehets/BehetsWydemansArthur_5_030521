@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function teddyInit(){
             
             "<div class='col-12 col-md-5 col-lg-3 card'><a class='card-body' href='item.html?" + value[i]._id + "' id='"+ value[i]._id + "'>" +
             "<h2 class='card-title'>"+ value[i].name +"</h2>" +
-            "<p class='card-text'>" + value[i].price/1000 + "€</p>" +
+            "<p class='card-text'>" + (value[i].price/1000).toString().replace('.', ',') + "€</p>" +
             "<img class='card-img' src='"+ value[i].imageUrl + "'></img>" + 
             "<p class='card-text'>" + value[i].description + "</p></a>" +
             "<button onclick ='addToBasket("+ id + ")' class='card-button btn btn-success'> Ajouter au panier</button> " +
@@ -35,7 +35,4 @@ document.addEventListener('DOMContentLoaded', function teddyInit(){
         /* Erreur */
     })
 })
-
-
-
 /* MISE EN PAGE END  */

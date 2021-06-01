@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function(){
     .then(function(value){
         for(i in value){
             if(value[i]._id == paramId){
+                document.getElementById('title').innerHTML = value[i].name + " : " + value[i].description;
                 let colors = "";
                 let id = "\""+value[i]._id+"\"";
                 for (j in value[i].colors){
@@ -29,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function(){
                 "<img class='col-12 col-md-5 col-lg-4' src='" + value[i].imageUrl + "' alt='image du produit'>" +
                 "<div class='col-12 col-md-7 col-lg-8 item'><p class='item__p-first'><b>" + (value[i].price/1000).toString().replace('.', ',') + "€</b><br></p> " + 
                 "<p class='item__p-second'>" + value[i].description + "</p>" +
-                "<div><label for='color'>Couleur : </label><select name='color' class='item__color'>" +colors + "</select></div>" +
+                "<div><label for='color'>Couleur :</label><select name='color' class='item__color'>" +colors + "</select></div>" +
                 "</div></div>" + 
                 "<button onclick ='addToBasket("+ id + ")' class='item-button btn btn-success'> Ajouter au panier</button> ";
             }

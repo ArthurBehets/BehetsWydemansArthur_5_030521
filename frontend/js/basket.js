@@ -1,6 +1,5 @@
 var basketTotal = 0;
 
-
 document.addEventListener('DOMContentLoaded', function basketInit(){
     if(localStorage.length > 0){
         Object.keys(localStorage).forEach(function(key){
