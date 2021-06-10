@@ -1,8 +1,9 @@
 document.addEventListener('DOMContentLoaded', function(){
+    localStorage.setItem("command", "");
     const paramId = location.search.substring(1).split("&");
         /*Notification on basket  */
     if(localStorage.length >= 1){
-        let notif = localStorage.length;
+        let notif = localStorage.length -1;
         document.getElementById("notification").innerHTML = "Mon panier<b class='notification'>" + notif + "</b>";
     }
     /*Notification END*/ 

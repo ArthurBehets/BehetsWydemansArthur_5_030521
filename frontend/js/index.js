@@ -1,9 +1,10 @@
 /* MISE EN PAGE  */
 
 document.addEventListener('DOMContentLoaded', function teddyInit(){
+    localStorage.setItem("command", "");
     /*Notification on basket  */
-    if(localStorage.length >= 1){
-        let notif = localStorage.length;
+    if(localStorage.length >= 2){
+        let notif = localStorage.length -1;
         document.getElementById("notification").innerHTML = "Mon panier<b class='notification'>" + notif + "</b>";
     }
     /*Notification END*/ 

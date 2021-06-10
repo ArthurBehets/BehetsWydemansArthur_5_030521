@@ -1,3 +1,14 @@
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 h1 {
   padding: 15px;
   margin-left: 20px;
@@ -191,6 +202,11 @@ h1 {
 .recap {
   margin-top: 75px;
 }
+.recap__body {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 100px;
+}
 .recap__body-title {
   margin-bottom: 30px;
 }
@@ -204,6 +220,12 @@ h1 {
 }
 .recap__body-subtitle {
   margin-bottom: 25px;
+}
+
+.command-total {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
 }
 
 /* Command END */
@@ -225,5 +247,17 @@ h1 {
   width: 25%;
   margin-left: 10px;
 }
+
+/* Item END */
+/* Footer */
+.footer {
+  padding-top: 10px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  padding-bottom: 20px;
+}
+
+/* Footer END */
 
 /*# sourceMappingURL=style.css.map */

@@ -16,7 +16,7 @@ function addToBasket(id){
                     article.amount = 1;
                     let object = JSON.stringify(article);
                     localStorage.setItem(id, object);
-                    let notif = localStorage.length;
+                    let notif = localStorage.length -1;
                     document.getElementById("notification").innerHTML = "Mon panier<b class='notification'>" + notif + "</b>";
                     document.getElementById("alert").innerHTML = "<div class ='alert-good'><p>L'élément a bien été ajouté au panier</p></div>";
                     setTimeout(function(){
@@ -28,12 +28,20 @@ function addToBasket(id){
         else{
             let item = JSON.parse(testId);
             if (item.amount > 0){
-                if (confirm("Cet élément est déjà présent " + item.amount + " fois dans votre panier. Voulez vous ajouter un nouvel exemplaire?")){
-                    item.amount += 1;
-                    localStorage.setItem(id, JSON.stringify(item));
-                    let notif = localStorage.length;
-                    document.getElementById("notification").innerHTML = "Mon panier<b class='notification'>" + notif + "</b>";
-                    document.getElementById("alert").innerHTML = "<div class ='alert-good'><p>L'élément a bien été ajouté au panier</p></div>";
+                if(item.amount < 999){
+                    if (confirm("Cet élément est déjà présent " + item.amount + " fois dans votre panier. Voulez vous ajouter un nouvel exemplaire?")){
+                        item.amount += 1;
+                        localStorage.setItem(id, JSON.stringify(item));
+                        let notif = localStorage.length -1;
+                        document.getElementById("notification").innerHTML = "Mon panier<b class='notification'>" + notif + "</b>";
+                        document.getElementById("alert").innerHTML = "<div class ='alert-good'><p>L'élément a bien été ajouté au panier</p></div>";
+                        setTimeout(function(){
+                        document.getElementById("alert").innerHTML = "";
+                        }, 5000);
+                    }
+                }
+                else{
+                    document.getElementById("alert").innerHTML = "<div class ='alert-bad'><p>Vous avez déjà le maximum d'item disponibles pour cet item</p></div>";
                     setTimeout(function(){
                     document.getElementById("alert").innerHTML = "";
                     }, 5000);
@@ -42,7 +50,7 @@ function addToBasket(id){
             else{
                 item.amount = 1;
                 localStorage.setItem(id, JSON.stringify(item));
-                let notif = localStorage.length;
+                let notif = localStorage.length -1;
                 document.getElementById("notification").innerHTML = "Mon panier<b class='notification'>" + notif + "</b>";
             }
         }
@@ -60,19 +68,18 @@ function addToBasket(id){
 function changeAmount(name, id, price){
     let newAmount = document.getElementById(name).value;
     if(newAmount%1 == 0){
-        if(newAmount > 0 && newAmount < 999){
+        if(newAmount > 0 && newAmount <= 999){
             let oldPriceObj = localStorage.getItem(id);
             let oldPrice = JSON.parse(oldPriceObj).price * JSON.parse(oldPriceObj).amount;
             let priceNumber = parseFloat(price);
             document.getElementById(name + "Price").innerHTML = (priceNumber*newAmount/1000).toString().replace('.', ',') + "€";
             let changingObject = localStorage.getItem(id);
             let changingItem = JSON.parse(changingObject);
-            changingItem.amount = newAmount;
+            changingItem.amount = Number(newAmount);
             localStorage.setItem(id, JSON.stringify(changingItem));
             basketTotal -= oldPrice;
             basketTotal += priceNumber*newAmount;
             document.getElementById("basket-total").innerHTML = "Total : " + (basketTotal/1000).toString().replace('.', ',') + "€";
-            document.getElementById("submit-command").innerHTML = "<button class='btn btn-success btn-command' onclick ='commandSubmit()'>Passer commande</button>";
         }
         else{
             document.getElementById("alert").innerHTML = "<div class ='alert-bad'><p>Veuillez entrer un nombre entre 1 et 999</p></div>";
@@ -101,8 +108,8 @@ function deleteFromBasket(id){
     basketTotal -= oldPrice;
     localStorage.removeItem(id);
     document.getElementById(id).innerHTML = "";
-    if(localStorage.length >= 1){
-        let notif = localStorage.length;
+    if(localStorage.length >= 2){
+        let notif = localStorage.length -1;
         document.getElementById("basket-total").innerHTML = "Total : " + (basketTotal/1000).toString().replace('.', ',') + "€";
         document.getElementById("notification").innerHTML = "Mon panier<b class='notification'>" + notif + "</b>";
     }
@@ -115,3 +122,42 @@ function deleteFromBasket(id){
 }
 
 
+
+function initCommand(){
+    let contact = new Object;
+    let products = [];
+        Object.keys(localStorage).forEach (function(key){
+        let object = localStorage.getItem(key);
+        if(key != "command"){
+            let item = JSON.parse(object);
+            products.push(item._id);
+            contact.email = "arthur.behets24@gmail.com";
+            contact.firstName = "Arthur";
+            contact.lastName = "Behets";
+            contact.address = "Avenue des combattants";
+            contact.city = "Bousval";
+        }
+        })
+        let _response = fetch("http://localhost:3000/api/teddies/order", {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method : "POST",
+            body : JSON.stringify({products, contact})
+        })
+        .then(response => response.json())
+        return _response;
+}
+
+
+function sendingCommand(){
+    initCommand()
+    .then(function (data){
+        console.log(data);
+        localStorage.setItem("command", JSON.stringify(data));
+    })
+    .then(function(data){
+        window.location.href = "command.html";
+    })
+}   
