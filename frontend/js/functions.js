@@ -125,17 +125,17 @@ function deleteFromBasket(id){
 
 function initCommand(){
     let contact = new Object;
+    contact.email = document.getElementById("email").value;
+    contact.firstName = document.getElementById("firstName").value;
+    contact.lastName = document.getElementById("lastName").value;
+    contact.address = document.getElementById("address").value;
+    contact.city = document.getElementById("city").value;
     let products = [];
         Object.keys(localStorage).forEach (function(key){
         let object = localStorage.getItem(key);
         if(key != "command"){
             let item = JSON.parse(object);
             products.push(item._id);
-            contact.email = "arthur.behets24@gmail.com";
-            contact.firstName = "Arthur";
-            contact.lastName = "Behets";
-            contact.address = "Avenue des combattants";
-            contact.city = "Bousval";
         }
         })
         let _response = fetch("http://localhost:3000/api/teddies/order", {
@@ -160,4 +160,4 @@ function sendingCommand(){
     .then(function(data){
         window.location.href = "command.html";
     })
-}   
+}  
