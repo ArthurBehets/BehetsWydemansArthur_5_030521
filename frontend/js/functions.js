@@ -115,7 +115,7 @@ function deleteFromBasket(id){
     }
     else{
         document.getElementById("basket-total").innerHTML = "";
-        document.getElementById("submit-command").innerHTML = "";
+        document.getElementById("form").innerHTML = "";
         document.getElementById("notification").innerHTML = "Mon panier";
         document.getElementById("cardsContainer").innerHTML = "<div class='basket__cardsContainer-empty'><p>Votre panier est vide. Remplissez le avant de passez commande</p></div>"
     }
@@ -131,33 +131,34 @@ function initCommand(){
     contact.address = document.getElementById("address").value;
     contact.city = document.getElementById("city").value;
     let products = [];
-        Object.keys(localStorage).forEach (function(key){
-        let object = localStorage.getItem(key);
-        if(key != "command"){
-            let item = JSON.parse(object);
-            products.push(item._id);
-        }
-        })
-        let _response = fetch("http://localhost:3000/api/teddies/order", {
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            method : "POST",
-            body : JSON.stringify({products, contact})
-        })
-        .then(response => response.json())
-        return _response;
+    let object;
+    let item;
+    Object.keys(localStorage).forEach (function(key){
+    object = localStorage.getItem(key);
+    if(key != "command"){
+        item = JSON.parse(object);
+        products.push(item._id);
+    }
+    });
+    sendingCommand(products, contact);
 }
 
+function sendingCommand(products, contact){
+    fetch("http://localhost:3000/api/teddies/order", {
+	method: "POST",
+	headers: { 
+    'Accept': 'application/json', 
+    'Content-Type': 'application/json' 
+    },
+	body: JSON.stringify({products, contact})
+    })
+    .then(response => response.json())
+    .then(data => {
+        localStorage.setItem("command", JSON.stringify(data))
+    })
+    .then(window.location.href = "command.html")
+    .catch((error) => {
+        console.log(error)
+    })
+} 
 
-function sendingCommand(){
-    initCommand()
-    .then(function (data){
-        console.log(data);
-        localStorage.setItem("command", JSON.stringify(data));
-    })
-    .then(function(data){
-        window.location.href = "command.html";
-    })
-}  
