@@ -177,7 +177,8 @@ h1 {
   right: 0px;
   top: 94%;
   height: 5%;
-  width: 25%;
+  padding-left: 2%;
+  padding-right: 2%;
   background-color: #ff5a5a;
   border-radius: 10px;
   text-align: center;
@@ -191,7 +192,8 @@ h1 {
   right: 0px;
   top: 94%;
   height: 5%;
-  width: 25%;
+  padding-left: 2%;
+  padding-right: 2%;
   background-color: #198754;
   border-radius: 10px;
   text-align: center;

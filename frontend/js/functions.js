@@ -140,7 +140,21 @@ function initCommand(){
         products.push(item._id);
     }
     });
-    sendingCommand(products, contact);
+    let control = true;
+    for (i in contact){
+        if (contact[i] == ""){
+            control = false;
+        }
+    }
+    if (control == true){
+        sendingCommand(products, contact);
+    }
+    else{
+        document.getElementById("alert").innerHTML = "<div class ='alert-bad'><p>Veuillez renseigner tout les champs !</p></div>";
+            setTimeout(function(){
+                document.getElementById("alert").innerHTML = "";
+            }, 5000)
+    }
 }
 
 function sendingCommand(products, contact){
@@ -153,10 +167,10 @@ function sendingCommand(products, contact){
 	body: JSON.stringify({products, contact})
     })
     .then(response => response.json())
-    .then(data => {
-        localStorage.setItem("command", JSON.stringify(data))
+    .then(function(data){
+        localStorage.setItem("command", JSON.stringify(data));
+        window.location.href = "command.html"
     })
-    .then(window.location.href = "command.html")
     .catch((error) => {
         console.log(error)
     })

@@ -29,21 +29,22 @@ document.addEventListener('DOMContentLoaded', function basketInit(){
         else{
             document.getElementById("cardsContainer").innerHTML = "<div class='basket__cardsContainer-empty'><p>Votre panier est vide. Remplissez le avant de passez commande</p></div>"
         }
-    if(basketTotal > 0){
-        document.getElementById("basket-total").innerHTML = "Total : " + (basketTotal/1000).toString().replace('.', ',') + "€";
-        document.getElementById("form").innerHTML = "<div class='form-group flex-column'>" + 
-        "<label for='firstName'>Prénom</label><input class='form-control' type='text' name='firstName' id='firstName' required>" + 
-        "</div>" + 
-        "<div class='form-group' ><label for='lastName'>Nom</label><input  class='form-control' type='text' name='lastName' id='lastName' required>" + 
-        "</div>" +
-        "<div class='form-group' ><label for='email'>Email</label><input  class='form-control' type='email' name='email' id='email' required>" + 
-        "</div>" +
-        "<div class='form-group' ><label for='address'>Adresse</label><input  class='form-control' type='text' name='address' id='address' required>" + 
-        "</div>" +
-        "<div class='form-group' ><label for='city'>Ville</label><input  class='form-control' type='text' name='city' id='city' required>" + 
-        "</div>" + 
-        "<input type='submit' class='btn btn-success mt-2' value='Passer Commande'></input>";
-    }
+        if(basketTotal > 0){
+            document.getElementById("basket-total").innerHTML = "Total : " + (basketTotal/1000).toString().replace('.', ',') + "€";
+            document.getElementById("form").innerHTML = "<div class='form-group flex-column'>" + 
+            "<label for='firstName'>Prénom</label><input class='form-control' type='text' name='firstName' id='firstName' required>" + 
+            "</div>" + 
+            "<div class='form-group' ><label for='lastName'>Nom</label><input  class='form-control' type='text' name='lastName' id='lastName' required>" + 
+            "</div>" +
+            "<div class='form-group' ><label for='email'>Email</label><input  class='form-control' type='email' name='email' id='email' required>" + 
+            "</div>" +
+            "<div class='form-group' ><label for='address'>Adresse</label><input  class='form-control' type='text' name='address' id='address' required>" + 
+            "</div>" +
+            "<div class='form-group' ><label for='city'>Ville</label><input  class='form-control' type='text' name='city' id='city' required>" + 
+            "</div>" + 
+            "<input type='button' onclick='initCommand()' class='btn btn-success mt-2' value='Passer Commande'></input>";
+            
+        }
     else{
         document.getElementById("basket-total").innerHTML = "";
     }
