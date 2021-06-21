@@ -1,10 +1,11 @@
 var basketTotal = 0;
-
+/* Ajoute de l'affichage au chargement de la page */
 document.addEventListener('DOMContentLoaded', function basketInit(){
     localStorage.setItem("command", "");
     if(localStorage.length > 1){
         Object.keys(localStorage).forEach(function(key){
             let object = localStorage.getItem(key);
+            /* Vérifie que des éléments doivent être ajoutés */
             if(key != "command"){
                 let item = JSON.parse(object);
                 if (item.amount > 0){
@@ -15,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function basketInit(){
                     "<label for='" + item.name + "'>Nbr d'articles :</label> "+ 
                     "<input class='basket__cardsContainer-card-input' type='number' onblur='changeAmount(\"" + item.name + "\", \"" + item._id + "\" , \"" + item.price + "\")' id='" + item.name + "' name='" + item.name + "' value='" + item.amount + "' min='1' max='999'></div>" +
                     "<div class='basket__cardsContainer-card-infos'>" +
-                    "<p class='basket__cardsContainer-card-infos-name'>" + item.name + "</p>" +
+                    "<h2 class='basket__cardsContainer-card-infos-name'>" + item.name + "</h2>" +
                     "<p class='basket__cardsContainer-card-infos-description'>" + item.description + "</p>" +
                     "</div> " +
                     "<p class='basket__cardsContainer-card-price' id='" + item.name + "Price'>" + (item.price*item.amount/1000).toString().replace('.', ',') + "€</p>" +
@@ -28,9 +29,9 @@ document.addEventListener('DOMContentLoaded', function basketInit(){
         })}
         else{
             document.getElementById("cardsContainer").innerHTML = "<div class='basket__cardsContainer-empty'><p>Votre panier est vide. Remplissez le avant de passez commande</p></div>"
-        }
+        } 
         if(basketTotal > 0){
-            document.getElementById("basket-total").innerHTML = "Total : " + (basketTotal/1000).toString().replace('.', ',') + "€";
+            document.getElementById("basket-total").innerHTML = "<h2>Total : " + (basketTotal/1000).toString().replace('.', ',') + "€</h2>";
             document.getElementById("form").innerHTML = "<div class='form-group flex-column'>" + 
             "<label for='firstName'>Prénom</label><input class='form-control' type='text' name='firstName' id='firstName' required>" + 
             "</div>" + 

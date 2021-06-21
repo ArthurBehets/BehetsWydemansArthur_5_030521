@@ -120,9 +120,9 @@ function deleteFromBasket(id){
         document.getElementById("cardsContainer").innerHTML = "<div class='basket__cardsContainer-empty'><p>Votre panier est vide. Remplissez le avant de passez commande</p></div>"
     }
 }
+/* Fin de function deleteFromBasket */
 
-
-
+/* Function initCommand qui prépare la commande pour le POST et appelle la function sendingCommand avec 2 paramètres (contact, products) */
 function initCommand(){
     let contact = new Object;
     contact.email = document.getElementById("email").value;
@@ -156,7 +156,8 @@ function initCommand(){
             }, 5000)
     }
 }
-
+/* Fin de function initCommand */
+/*Function sendingCommand recoit 2 paramètre qu'elle utilise en body de la methode POST. Ajoute la réponse au local storage et envoie vers command.html*/
 function sendingCommand(products, contact){
     fetch("http://localhost:3000/api/teddies/order", {
 	method: "POST",
