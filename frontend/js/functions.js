@@ -1,5 +1,5 @@
 /* Function qui recoit le paramètre de l'id à ajouter au panier et le cherche dans la DB pour l'ajouter au local Storage avec un élément "amount" en plus. Si il est déjà dans le local storage, ajoute 1 à amount*/
-
+let timeout = [];
 function addToBasket(id){
     fetch("http://localhost:3000/api/teddies")
     .then (function(res){
@@ -17,11 +17,15 @@ function addToBasket(id){
                     let object = JSON.stringify(article);
                     localStorage.setItem(id, object);
                     let notif = localStorage.length -1;
+                    for (i in timeout){
+                        clearTimeout(timeout[i]);
+                    }
                     document.getElementById("notification").innerHTML = "Mon panier<b class='notification'>" + notif + "</b>";
                     document.getElementById("alert").innerHTML = "<div class ='alert-good'><p>L'élément a bien été ajouté au panier</p></div>";
-                    setTimeout(function(){
-                    document.getElementById("alert").innerHTML = "";
-                    }, 5000);
+                    timeout.push(setTimeout(function(){
+                        timeout = [];
+                        document.getElementById("alert").innerHTML = "";
+                    }, 5000));
                 }
             }
         }
@@ -33,18 +37,26 @@ function addToBasket(id){
                         item.amount += 1;
                         localStorage.setItem(id, JSON.stringify(item));
                         let notif = localStorage.length -1;
+                        for (i in timeout){
+                            clearTimeout(timeout[i]);
+                        }
                         document.getElementById("notification").innerHTML = "Mon panier<b class='notification'>" + notif + "</b>";
                         document.getElementById("alert").innerHTML = "<div class ='alert-good'><p>L'élément a bien été ajouté au panier</p></div>";
-                        setTimeout(function(){
-                        document.getElementById("alert").innerHTML = "";
-                        }, 5000);
+                        timeout.push(setTimeout(function(){
+                            timeout = [];
+                            document.getElementById("alert").innerHTML = "";
+                        }, 5000));
                     }
                 }
                 else{
+                    for (i in timeout){
+                        clearTimeout(timeout[i]);
+                    }
                     document.getElementById("alert").innerHTML = "<div class ='alert-bad'><p>Vous avez déjà le maximum d'item disponibles pour cet item</p></div>";
-                    setTimeout(function(){
-                    document.getElementById("alert").innerHTML = "";
-                    }, 5000);
+                    timeout.push(setTimeout(function(){
+                        timeout = [];
+                        document.getElementById("alert").innerHTML = "";
+                    }, 5000));
                 }
             }
             else{
@@ -84,19 +96,27 @@ function changeAmount(name, id, price){
         else{
             document.getElementById("alert").innerHTML = "<div class ='alert-bad'><p>Veuillez entrer un nombre entre 1 et 999</p></div>";
             let oldAmountObj = localStorage.getItem(id);
+            for (i in timeout){
+                clearTimeout(timeout[i]);
+            }
             document.getElementById(name).value = JSON.parse(oldAmountObj).amount;
-            setTimeout(function(){
+            timeout.push(setTimeout(function(){
+                timeout = [];
                 document.getElementById("alert").innerHTML = "";
-            }, 5000)
+            }, 5000));
         }
     }
     else{
         document.getElementById("alert").innerHTML = "<div class ='alert-bad'><p>Veuillez saisir un nombre entier</p></div>";
             let oldAmountObj = localStorage.getItem(id);
+            for (i in timeout){
+                clearTimeout(timeout[i]);
+            }
             document.getElementById(name).value = JSON.parse(oldAmountObj).amount;
-            setTimeout(function(){
+            timeout.push(setTimeout(function(){
+                timeout = [];
                 document.getElementById("alert").innerHTML = "";
-            }, 5000)
+            }, 5000));
     }
 }
 /* Fin de fonction changeAmount */
@@ -150,10 +170,14 @@ function initCommand(){
         sendingCommand(products, contact);
     }
     else{
-        document.getElementById("alert").innerHTML = "<div class ='alert-bad'><p>Veuillez renseigner tout les champs !</p></div>";
-            setTimeout(function(){
-                document.getElementById("alert").innerHTML = "";
-            }, 5000)
+        for (i in timeout){
+            clearTimeout(timeout[i]);
+        }
+        document.getElementById("alert").innerHTML = "<div class ='alert-bad'><p>Veuillez renseigner tous les champs !</p></div>";
+        timeout.push(setTimeout(function(){
+            timeout = [];
+            document.getElementById("alert").innerHTML = "";
+        }, 5000));
     }
 }
 /* Fin de function initCommand */
