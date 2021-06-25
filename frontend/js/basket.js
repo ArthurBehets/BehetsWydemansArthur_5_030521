@@ -28,20 +28,20 @@ document.addEventListener('DOMContentLoaded', function basketInit(){
             }
         })}
         else{
-            document.getElementById("cardsContainer").innerHTML = "<div class='basket__cardsContainer-empty'><p>Votre panier est vide. Remplissez le avant de passez commande</p></div>"
+            document.getElementById("cardsContainer").innerHTML = "<div class='basket__cardsContainer-empty'><p>Votre panier est vide. Remplissez le avant de passer commande</p></div>"
         } 
         if(basketTotal > 0){
             document.getElementById("basket-total").innerHTML = "<h2>Total : " + (basketTotal/1000).toString().replace('.', ',') + "€</h2>";
             document.getElementById("form").innerHTML = "<div class='form-group flex-column'>" + 
-            "<label for='firstName'>Prénom</label><input class='form-control' type='text' name='firstName' id='firstName' required>" + 
+            "<label for='firstName'>Prénom</label><input class='form-control' type='text' name='firstName' id='firstName' onblur ='validateFirstName()' required>" + 
             "</div>" + 
-            "<div class='form-group' ><label for='lastName'>Nom</label><input  class='form-control' type='text' name='lastName' id='lastName' required>" + 
+            "<div class='form-group' ><label for='lastName'>Nom</label><input  class='form-control' type='text' onblur ='validateLastName()' name='lastName' id='lastName' required>" + 
             "</div>" +
-            "<div class='form-group' ><label for='email'>Email</label><input  class='form-control' type='email' name='email' id='email' required>" + 
+            "<div class='form-group' ><label for='email'>Email</label><input  class='form-control' onblur='validateEmail()' type='email' name='email' id='email' required>" + 
             "</div>" +
-            "<div class='form-group' ><label for='address'>Adresse</label><input  class='form-control' type='text' name='address' id='address' required>" + 
+            "<div class='form-group' ><label for='address'>Adresse</label><input  class='form-control' onblur='validateAddress()' type='text' name='address' id='address' required>" + 
             "</div>" +
-            "<div class='form-group' ><label for='city'>Ville</label><input  class='form-control' type='text' name='city' id='city' required>" + 
+            "<div class='form-group' ><label for='city'>Ville</label><input  class='form-control' onblur ='validateCity()' type='text' name='city' id='city' required>" + 
             "</div>" + 
             "<input type='button' onclick='initCommand()' class='btn btn-success mt-2' value='Passer Commande'></input>";
             
