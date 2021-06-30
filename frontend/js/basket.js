@@ -44,7 +44,6 @@ document.addEventListener('DOMContentLoaded', function basketInit(){
             "<div class='form-group' ><label for='city'>Ville</label><input  class='form-control' onblur ='validateCity()' type='text' name='city' id='city' required>" + 
             "</div>" + 
             "<input type='button' onclick='initCommand()' class='btn btn-success mt-2' value='Passer Commande'></input>";
-            
         }
     else{
         document.getElementById("basket-total").innerHTML = "";

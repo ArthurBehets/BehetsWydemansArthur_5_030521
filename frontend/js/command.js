@@ -15,4 +15,5 @@ document.addEventListener('DOMContentLoaded', function(){
             document.getElementById("commandIdentifiant").innerHTML = "Identifiant de commande : " + identifiant;
         }
     })
+    localStorage.clear();
 })

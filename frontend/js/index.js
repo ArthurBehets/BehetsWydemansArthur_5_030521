@@ -29,8 +29,12 @@ document.addEventListener('DOMContentLoaded', function teddyInit(){
             "</div>";  
         }
     })
-    .catch(function(err){
-        /* Erreur */
+    .catch(function(){
+        document.getElementById("alert").innerHTML = "<div class ='alert-bad'><p>Le serveur ne répond pas.</p></div>";
+        timeout.push(setTimeout(function(){
+            timeout = [];
+            document.getElementById("alert").innerHTML = "";
+        }, 5000));
     })
 })
 /* MISE EN PAGE END  */

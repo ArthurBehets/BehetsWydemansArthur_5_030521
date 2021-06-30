@@ -1,33 +1,29 @@
 /* Function qui recoit le paramètre de l'id à ajouter au panier et le cherche dans la DB pour l'ajouter au local Storage avec un élément "amount" en plus. Si il est déjà dans le local storage, ajoute 1 à amount*/
 let timeout = [];
 function addToBasket(id){
-    fetch("http://localhost:3000/api/teddies")
+    fetch("http://localhost:3000/api/teddies/" + id)
     .then (function(res){
         if(res.ok){
-            return res.json();
+            return res.json()
         }
     })
     .then(function(value){
         let testId = localStorage.getItem(id);
         if (testId == null){  /*Vérifie si l'élément est déjà présent dans le local.storage */
-            for (i in value){
-                if (value[i]._id == id){
-                    let article = value[i];
-                    article.amount = 1;
-                    let object = JSON.stringify(article);
-                    localStorage.setItem(id, object);
-                    let notif = localStorage.length -1;
-                    for (i in timeout){
-                        clearTimeout(timeout[i]);
-                    }
-                    document.getElementById("notification").innerHTML = "Mon panier<b class='notification'>" + notif + "</b>";
-                    document.getElementById("alert").innerHTML = "<div class ='alert-good'><p>L'élément a bien été ajouté au panier</p></div>";
-                    timeout.push(setTimeout(function(){
-                        timeout = [];
-                        document.getElementById("alert").innerHTML = "";
-                    }, 5000));
-                }
+            let article = value;
+            article.amount = 1;
+            let object = JSON.stringify(article);
+            localStorage.setItem(id, object);
+            let notif = localStorage.length -1;
+            for (i in timeout){
+                clearTimeout(timeout[i]);
             }
+            document.getElementById("notification").innerHTML = "Mon panier<b class='notification'>" + notif + "</b>";
+            document.getElementById("alert").innerHTML = "<div class ='alert-good'><p>L'élément a bien été ajouté au panier</p></div>";
+            timeout.push(setTimeout(function(){
+                timeout = [];
+                document.getElementById("alert").innerHTML = "";
+            }, 5000));
         }
         else{
             let item = JSON.parse(testId);
