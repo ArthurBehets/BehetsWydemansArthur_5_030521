@@ -1,1 +1,1 @@
-After cloning this, lunch 'node serve' and look at your localhost:3000
+After cloning this, lunch 'node serve' to connect to the API
